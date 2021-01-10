@@ -7,6 +7,8 @@ This helper is developed to v1 of the API. For more information see: https://amb
 ## Prereqs
 To access the API this helper requres an API Key and Application key both of which can be requested from your account page at https://dashboard.ambientweather.net/account. 
 
-## Installation and Usage
+## Installation
 To add to your project:
 ```go get github.com/codychamberlain/ambientapigo```
+
+## Usage

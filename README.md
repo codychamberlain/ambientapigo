@@ -15,7 +15,7 @@ Import to your project:
 ```import "github.com/codychamberlain/ambientapigo"```
 
 ## Usage
-Example application which calls GetDevices and returns a slice of struct Devices. For each device we pull data which is returned as a slice of struct DeviceData. Output is entire struct.
+Example application which calls GetDevices and returns a slice of struct Devices. For each device we poll GetDeviceData which is returns a slice of struct DeviceData. Output is entire struct. Access individual data fields via . notation aligned to data struct below.  
 ```
 package main
 

@@ -12,11 +12,13 @@ To add to your project:
 ```go get github.com/codychamberlain/ambientapigo```
 
 Import to your project:  
-```import "github.com/codychamberlain/ambientapigo"```
+```Go
+import "github.com/codychamberlain/ambientapigo"
+```
 
 ## Usage
 Example application which calls GetDevices and returns a slice of struct Devices. For each device we poll GetDeviceData which is returns a slice of struct DeviceData. Output is entire struct. Access individual data fields via . notation aligned to data struct below.  
-```
+```Go
 package main
 
 import (
@@ -29,7 +31,7 @@ import (
 func main() {
 	applicationKey := ""
 	apiKey := ""
-	limit := 1 //Number of Device data items to poll. 
+	limit := 1 //Number of Device data items to poll. Default is 288. 
 
 	devices := ambientapigo.GetDevices(applicationKey, apiKey)
 	for _, d := range devices {
@@ -46,9 +48,10 @@ func main() {
 ## Known Issues and Quirks
 * At this time this has only been tested with 1 type of weather device. YMMV regarding data fields. Please update struct type as necessary if you identify additional fields. 
 * Only point in time data is provided. Real-time data via WebSockets is under development
+* GetDeviceData doesn't have paramter for endDate. Default is most recent - this is will be included in next commit. Default behavior pulls the most recent data item. 
 
 ## Data Types
-```
+```Go
 type Device []struct {
 	MacAddress string `json:"macAddress"`
 	LastData   struct {

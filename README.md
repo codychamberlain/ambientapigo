@@ -11,4 +11,7 @@ To access the API this helper requres an API Key and Application key both of whi
 To add to your project:  
 ```go get github.com/codychamberlain/ambientapigo```
 
+Import to your project:  
+```import "github.com/codychamberlain/ambientapigo"```
+
 ## Usage

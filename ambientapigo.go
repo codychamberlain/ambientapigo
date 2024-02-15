@@ -3,14 +3,14 @@ package ambientapigo
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 )
 
 const baseURL string = "https://api.ambientweather.net/v1/devices"
 
-//Device struct is a nested struct that maps to Ambient API JSON structure
+// Device struct is a nested struct that maps to Ambient API JSON structure
 type Device []struct {
 	MacAddress string `json:"macAddress"`
 	LastData   struct {
@@ -59,7 +59,7 @@ type Device []struct {
 	} `json:"info"`
 }
 
-//DeviceData is the struct containing data queried by device, based on MAC address
+// DeviceData is the struct containing data queried by device, based on MAC address
 type DeviceData []struct {
 	Dateutc        int64     `json:"dateutc"`
 	Winddir        int       `json:"winddir"`
@@ -99,7 +99,7 @@ func GetDevices(applicationKey string, apiKey string) Device {
 		if response.StatusCode != 200 {
 			fmt.Print(response.Status)
 		} else {
-			body, _ := ioutil.ReadAll(response.Body)
+			body, _ := io.ReadAll(response.Body)
 			err := json.Unmarshal(body, &d)
 			if err != nil {
 				fmt.Print(err)
@@ -120,7 +120,7 @@ func GetDeviceData(mac string, limit int, applicationKey string, apiKey string) 
 		if response.StatusCode != 200 {
 			fmt.Print(response.Status)
 		} else {
-			body, _ := ioutil.ReadAll(response.Body)
+			body, _ := io.ReadAll(response.Body)
 			err := json.Unmarshal(body, &dd)
 			if err != nil {
 				fmt.Print(err)
